@@ -182,21 +182,23 @@ async function renderChart(options = {}, path = 'chart.png') {
 export async function generateChart() {
   const submissions = await readSubmissionsFile()
 
-  const loc = async (day: number) => {
-    const source = await readDayFile(day)
-    if (!source) return 0
-    return takeWhile((line) => !/(p1ex|p2ex)/.test(line), source.split('\n')).length
-  }
-  const locs = await Promise.all(range(1, 26).map((day) => loc(day)))
+  const locs = await Promise.all(
+    range(1, 26).map(async (day) => {
+      const source = await readDayFile(day)
+      if (!source) return 0
+      return takeWhile((line) => !/(p1ex|p2ex)/.test(line), source.split('\n')).length
+    }),
+  )
+  const loc = (day: number) => locs[day - 1]
   const time1 = (day: number) => submissions[day - 1]?.part1?.time ?? 0
-  const time2 = (day: number) => submissions[day - 1]?.part1?.time ?? 0
+  const time2 = (day: number) => submissions[day - 1]?.part2?.time ?? 0
 
   const options = {
     data: {
       columns: [
-        ['part1', 0, ...range(1, 26).map((day) => time1(day))],
-        ['part2', 0, ...range(1, 26).map((day) => time2(day))],
-        ['loc', 0, ...range(1, 26).map((day) => locs[day])],
+        ['part1', 0, ...range(1, 26).map(time1)],
+        ['part2', 0, ...range(1, 26).map(time2)],
+        ['loc', 0, ...range(1, 26).map(loc)],
       ],
       types: {
         loc: 'area',
@@ -230,7 +232,7 @@ export async function generateChart() {
       padding: 2,
       width: {
         ratio: 0.5,
-        max: 30,
+        max: 26,
       },
     },
   }

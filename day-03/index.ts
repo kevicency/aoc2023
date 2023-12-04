@@ -57,7 +57,7 @@ export const p2 = ({ numbers, symbols }: ReturnType<typeof parse>) =>
 
 export const p1ex: Examples = [
   {
-    expected: 43610,
+    expected: 4361,
     input: `
       467..114..
       ...*......
