@@ -1,0 +1,31 @@
+{
+  "name": "aoc2015",
+  "type": "module",
+  "author": {
+    "name": "Kevin Mees",
+    "url": "https://github.com/kevicency/aoc2015"
+  },
+  "module": "index.ts",
+  "scripts": {
+    "day": "bun --watch run scripts/run-day.ts",
+    "setup": "bun run scripts/setup-day.ts",
+    "submit": "bun run scripts/submit-day.ts",
+    "lint": "eslint .",
+    "format": "eslint . --fix"
+  },
+  "dependencies": {
+    "@types/common-tags": "^1.8.4",
+    "@types/ramda": "^0.29.9",
+    "common-tags": "^1.8.2",
+    "ramda": "^0.29.1",
+    "typescript": "^5.3.2"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.6",
+    "bun-types": "latest",
+    "chalk": "^5.3.0",
+    "eslint": "^8.54.0",
+    "jsdom": "^23.0.1",
+    "prettier": "^3.1.0"
+  }
+}

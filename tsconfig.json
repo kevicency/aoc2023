@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "target": "esnext",
+    "jsx": "react-jsx",
+    "lib": ["ESNext"],
+    "moduleDetection": "force",
+    "baseUrl": "./",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "~utils": ["utils/index.ts"],
+      "~utils/*": ["utils/*"],
+      "~types": ["./scripts/types.ts"],
+    },
+    "types": [
+      "bun-types" // add Bun global
+    ],
+    "allowImportingTsExtensions": true,
+    "allowJs": true,
+    "strict": false,
+    "downlevelIteration": true,
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "include": ["scripts/**/*", "utils/**/*", "day-*/**/*"],
+}

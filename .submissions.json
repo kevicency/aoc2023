@@ -1,0 +1,37 @@
+[
+  null,
+  {
+    "part1": {
+      "solved": true,
+      "result": 353,
+      "time": 0.24320900000000734,
+      "attempts": [
+        12
+      ]
+    },
+    "part2": {
+      "solved": true,
+      "result": 152,
+      "time": 0.2613330000000076,
+      "attempts": []
+    }
+  },
+  null,
+  null,
+  {
+    "part1": {
+      "solved": true,
+      "result": 21568,
+      "time": 1.7620410000000106,
+      "attempts": [
+        36247
+      ]
+    },
+    "part2": {
+      "solved": true,
+      "result": 11827296,
+      "time": 1.8804169999999942,
+      "attempts": []
+    }
+  }
+]
