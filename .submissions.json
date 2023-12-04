@@ -1,20 +1,351 @@
 [
-  null,
-  null,
-  null,
+  {
+    "part1": {
+      "solved": true,
+      "result": "55712",
+      "attempts": [],
+      "time": 0.704167
+    },
+    "part2": {
+      "solved": true,
+      "result": "55413",
+      "attempts": ["55445"],
+      "time": 2.178292
+    }
+  },
+  {
+    "part1": {
+      "solved": true,
+      "result": "2771",
+      "attempts": [],
+      "time": 0.917584
+    },
+    "part2": {
+      "solved": true,
+      "result": "70924",
+      "attempts": [],
+      "time": 1.186625
+    }
+  },
+  {
+    "part1": {
+      "solved": true,
+      "result": "553825",
+      "attempts": [],
+      "time": 11.563292
+    },
+    "part2": {
+      "solved": true,
+      "result": "93994191",
+      "attempts": [],
+      "time": 5.156292
+    }
+  },
   {
     "part1": {
       "solved": true,
       "result": 21568,
       "time": 1.7620410000000106,
-      "attempts": [
-        36247
-      ]
+      "attempts": [36247]
     },
     "part2": {
       "solved": true,
       "result": 11827296,
       "time": 1.8804169999999942,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    }
+  },
+  {
+    "part1": {
+      "solved": false,
+      "result": null,
+      "time": 0,
+      "attempts": []
+    },
+    "part2": {
+      "solved": false,
+      "result": null,
+      "time": 0,
       "attempts": []
     }
   }
