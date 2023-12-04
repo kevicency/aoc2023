@@ -35,7 +35,7 @@ export const p2ex: Examples = [
   { expected: 0, input: '' },
 ]
 
-// export const onlyEx = true
+export const onlyEx = true
 `
 
 export const generateTestTemplate = (day: number) => `import { expect, test } from 'bun:test'

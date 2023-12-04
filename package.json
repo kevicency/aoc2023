@@ -1,9 +1,9 @@
 {
-  "name": "aoc2015",
+  "name": "@kevicency/aoc2023",
   "type": "module",
   "author": {
     "name": "Kevin Mees",
-    "url": "https://github.com/kevicency/aoc2015"
+    "url": "https://github.com/kevicency/aoc2023"
   },
   "module": "index.ts",
   "scripts": {
