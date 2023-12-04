@@ -1,5 +1,5 @@
 import { Submissions } from '~types'
-import { renderDayBadges, renderResults } from './utils.ts'
+import { formatDayName, generateChart, renderDayBadges, renderResults } from './utils.ts'
 import { range } from 'ramda'
 
 const submissionsPath = '.submissions.json'
@@ -38,6 +38,8 @@ export const updateReadmeFile = async () => {
   const badges = renderDayBadges(submissions)
   const results = renderResults(submissions)
 
+  await generateChart()
+
   const updatedReadme = readme
     .replace(
       /<!--SOLUTIONS-->(.|\n|\r)+<!--\/SOLUTIONS-->/,
@@ -49,4 +51,14 @@ export const updateReadmeFile = async () => {
     )
 
   await Bun.write(readmePath, updatedReadme)
+}
+
+export const readDayFile = async (day: number) => {
+  const file = Bun.file(`${formatDayName(day)}/index.ts`)
+
+  if (await file.exists()) {
+    return await file.text()
+  }
+
+  return ''
 }

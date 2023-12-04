@@ -1,5 +1,8 @@
 import { Submissions } from '~types'
 import { stripIndents } from 'common-tags'
+import puppeteer from 'puppeteer'
+import { readDayFile, readSubmissionsFile } from './io.ts'
+import { range, takeWhile } from 'ramda'
 
 export const formatDay = (day: number | string) => {
   const parsedDay = Number(day)
@@ -89,6 +92,7 @@ export const renderDayBadges = (submissions: Submissions) => {
     .join('\n')
 }
 
+let bb: any = {}
 export const renderResults = (submissions: Submissions) => {
   let totalTime = 0
   let totalStars = 0
@@ -133,4 +137,103 @@ export const renderResults = (submissions: Submissions) => {
   `
 
   return [results, summary].join('\n\n')
+}
+
+async function renderChart(options = {}, path = 'chart.png') {
+  const browser = await puppeteer.launch({ headless: 'new' })
+  const page = await browser.newPage()
+
+  // load billboard.js assets from CDN
+  await page.addStyleTag({
+    url: 'https://cdn.jsdelivr.net/npm/billboard.js/dist/theme/datalab.min.css',
+  })
+  await page.addScriptTag({
+    url: 'https://cdn.jsdelivr.net/npm/billboard.js/dist/billboard.pkgd.min.js',
+  })
+  await page.addStyleTag({
+    content: `
+      body { background: #0f0f23; color: #ccc; fons-size: 16px; }
+      .bb-axis line, .bb-axis .domain{
+        stroke: #009900!important;
+      }
+      .bb-axis text, .bb-legend text {
+        fill: #cccccc!important;
+      }
+    `,
+  })
+
+  await page.evaluate((options) => {
+    bb.generate(options)
+  }, options)
+
+  const content = await page.$('.bb')
+
+  // https://pptr.dev/#?product=Puppeteer&show=api-pagescreenshotoptions
+  await content.screenshot({
+    path,
+    omitBackground: false,
+    type: 'png',
+  })
+
+  await page.close()
+  await browser.close()
+}
+
+export async function generateChart() {
+  const submissions = await readSubmissionsFile()
+
+  const loc = async (day: number) => {
+    const source = await readDayFile(day)
+    if (!source) return 0
+    return takeWhile((line) => !/(p1ex|p2ex)/.test(line), source.split('\n')).length
+  }
+  const locs = await Promise.all(range(1, 26).map((day) => loc(day)))
+  const time1 = (day: number) => submissions[day - 1]?.part1?.time ?? 0
+  const time2 = (day: number) => submissions[day - 1]?.part1?.time ?? 0
+
+  const options = {
+    data: {
+      columns: [
+        ['part1', 0, ...range(1, 26).map((day) => time1(day))],
+        ['part2', 0, ...range(1, 26).map((day) => time2(day))],
+        ['loc', 0, ...range(1, 26).map((day) => locs[day])],
+      ],
+      types: {
+        loc: 'area',
+        part1: 'bar',
+        part2: 'bar',
+      },
+      colors: {
+        loc: '#ff0000',
+        part1: '#9999cc',
+        part2: '#ffff66',
+      },
+      axes: {
+        loc: 'y2',
+        part1: 'y',
+        part2: 'y',
+      },
+    },
+    axis: {
+      x: {
+        label: { text: 'Day', position: 'outer-center' },
+      },
+      y: {
+        label: 'Execution time in ms',
+      },
+      y2: {
+        show: true,
+        label: 'Lines of code',
+      },
+    },
+    bar: {
+      padding: 2,
+      width: {
+        ratio: 0.5,
+        max: 30,
+      },
+    },
+  }
+
+  await renderChart(options, 'chart.png')
 }
