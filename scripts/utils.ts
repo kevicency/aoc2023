@@ -1,3 +1,6 @@
+import { Submissions } from '~types'
+import { stripIndents } from 'common-tags'
+
 export const formatDay = (day: number | string) => {
   const parsedDay = Number(day)
   return String(parsedDay).padStart(2, '0')
@@ -63,4 +66,71 @@ export const isStringOrNumber = (value: any): value is string | number =>
 export const aocYear = () => {
   const envYear = +(Bun.env.YEAR ?? '')
   return envYear || new Date().getFullYear()
+}
+
+export const renderDayBadges = (submissions: Submissions) => {
+  return submissions
+    .map(({ part1, part2 }, index) => {
+      const day = String(index + 1).padStart(2, '0')
+
+      const color =
+        (part1.solved && part2.solved) || (part1.solved && day === '25')
+          ? 'green'
+          : part1.solved || part2.solved
+            ? 'yellow'
+            : 'gray'
+
+      const badge = `![Day](https://badgen.net/badge/${day}/%E2%98%8${
+        part1.solved ? 5 : 6
+      }%E2%98%8${part2.solved || (part1.solved && day === '25') ? 5 : 6}/${color})`
+
+      return color !== 'gray' ? `[${badge}](${formatDayName(day)}/index.ts)` : badge
+    })
+    .join('\n')
+}
+
+export const renderResults = (submissions: Submissions) => {
+  let totalTime = 0
+  let totalStars = 0
+
+  const results = submissions
+    .map(({ part1, part2 }, index) => {
+      const day = String(index + 1).padStart(2, '0')
+
+      let timeBoth = 0
+
+      if (part1.solved) {
+        totalStars++
+        totalTime += part1.time ?? 0
+        timeBoth += part1.time ?? 0
+      }
+      if (part2.solved) {
+        totalStars++
+        totalTime += part2.time ?? 0
+        timeBoth += part2.time ?? 0
+      }
+
+      if (day === '25' && part1.solved) {
+        totalStars++
+      }
+
+      return stripIndents`
+      \`\`\`
+      Day ${day}
+      Time part 1: ${part1.time !== null && part1.solved ? formatPerformance(part1.time) : '-'}
+      Time part 2: ${part2.time !== null && part2.solved ? formatPerformance(part2.time) : '-'}
+      Both parts: ${timeBoth !== 0 ? formatPerformance(timeBoth) : '-'}
+      \`\`\`
+    `
+    })
+    .join('\n\n')
+
+  const summary = stripIndents`
+    \`\`\`
+    Total stars: ${totalStars}/50
+    Total time: ${formatPerformance(totalTime)}
+    \`\`\`
+  `
+
+  return [results, summary].join('\n\n')
 }

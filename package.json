@@ -10,6 +10,7 @@
     "day": "bun --watch run scripts/run-day.ts",
     "setup": "bun run scripts/setup-day.ts",
     "submit": "bun run scripts/submit-day.ts",
+    "update:readme": "bun run scripts/update-readme.ts",
     "lint": "eslint .",
     "format": "eslint . --fix"
   },

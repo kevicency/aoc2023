@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import { aocYear, formatDay } from './utils.ts'
 import { runDay, RunResult } from './run-day.ts'
-import { readSubmissionsFile, writeSubmissionsFile } from './io.ts'
+import { readSubmissionsFile, updateReadmeFile, writeSubmissionsFile } from './io.ts'
 import { Status, submitSolution } from './api.ts'
 import { Submission, Submissions } from '~types'
 
@@ -44,7 +44,7 @@ const submitPart = async (
 
 const submitDay = async (day: number) => {
   const submissions = await readSubmissionsFile()
-  const daySubmission: Submissions[number] = submissions[day] ?? {
+  const daySubmission: Submissions[number] = submissions[day - 1] ?? {
     part1: { solved: false, result: null, time: 0, attempts: [] },
     part2: { solved: false, result: null, time: 0, attempts: [] },
   }
@@ -66,8 +66,9 @@ const submitDay = async (day: number) => {
     await submitPart(2, daySubmission.part2, runResult?.part2 ?? undefined)
   }
 
-  submissions[day] = daySubmission
+  submissions[day - 1] = daySubmission
   await writeSubmissionsFile(submissions)
+  await updateReadmeFile()
 }
 
 const day = Number(Bun.argv[2] ?? '')

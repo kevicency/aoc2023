@@ -1,21 +1,5 @@
 [
   null,
-  {
-    "part1": {
-      "solved": true,
-      "result": 353,
-      "time": 0.24320900000000734,
-      "attempts": [
-        12
-      ]
-    },
-    "part2": {
-      "solved": true,
-      "result": 152,
-      "time": 0.2613330000000076,
-      "attempts": []
-    }
-  },
   null,
   null,
   {
