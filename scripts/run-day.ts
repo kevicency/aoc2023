@@ -9,6 +9,9 @@ import {
 } from './utils.ts'
 import { Examples } from '~types'
 import { stripIndents } from 'common-tags'
+import { inspect } from 'util'
+
+const MAX_LOG_LENGTH = 99
 
 type RunConfig = {
   name: 'one' | 'two'
@@ -64,10 +67,15 @@ const runPart = ({ name, part, examples, parse, input, examplesOnly }: RunConfig
     console.log(chalk.yellow(`⏩  Part ${name} skipped because only examples.`))
   } else {
     console.log(`🖨️ Part ${name} (${formatPerformance(performance)}):`)
-    console.dir(result, { colors: true, depth: null })
+    console.log(
+      inspect(result, {
+        colors: true,
+        depth: null,
+        maxArrayLength: MAX_LOG_LENGTH,
+        compact: false,
+      }),
+    )
   }
-
-  console.log()
 
   return { success: !exampleFailed && isStringOrNumber(result), result, performance }
 }

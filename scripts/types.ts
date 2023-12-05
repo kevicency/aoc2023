@@ -1,6 +1,8 @@
 export type Example = { input: string; expected: string | number }
 export type Examples = Example[]
 
+export type Solution<TParse extends (input: string) => any> = (input: ReturnType<TParse>) => any
+
 export type Day =
   | 'day-01'
   | 'day-02'

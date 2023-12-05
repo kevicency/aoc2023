@@ -3,7 +3,7 @@ import { JSDOM } from 'jsdom'
 
 const headers = {
   Cookie: `session=${Bun.env.SESSION}`,
-  'User-Agent': 'github.com/kevicency/aoc2015 by kev.mees@gmail.com',
+  'User-Agent': 'github.com/kevicency/aoc2016 by kev.mees@gmail.com',
 }
 
 const API_URL = Bun.env.AOC_API ?? 'https://adventofcode.com'

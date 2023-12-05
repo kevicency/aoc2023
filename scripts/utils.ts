@@ -18,14 +18,13 @@ export const validateDay = (day: number | string) => {
   return day && !Number.isNaN(parsedDay) && parsedDay >= 1 && parsedDay <= 25
 }
 
-export const generateTemplate = (day: number) => `import { splitLines } from '~utils'
-import { Examples } from '~types'
+export const generateTemplate = (day: number) => `import { Solution, Examples } from '~types'
 
-export const parse = splitLines
+export const parse = (input: string) => input.split("\\n")
 
-export const p1 = (input: ReturnType<typeof parse>) => input
+export const p1: Solution<typeof parse> = input => input
 
-export const p2 = (input: ReturnType<typeof parse>) => input
+export const p2: Solution<typeof parse> = input => input
 
 export const p1ex: Examples = [
   { expected: 0, input: '' },
@@ -169,7 +168,7 @@ async function renderChart(options = {}, path = 'chart.png') {
   const content = await page.$('.bb')
 
   // https://pptr.dev/#?product=Puppeteer&show=api-pagescreenshotoptions
-  await content.screenshot({
+  await content?.screenshot({
     path,
     omitBackground: false,
     type: 'png',
