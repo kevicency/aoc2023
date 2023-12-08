@@ -147,6 +147,7 @@ export const submitSolution = (
         console.log('Status:', chalk.yellow('TO SOON'))
       } else if (info.includes("You don't seem to be solving the right level")) {
         console.log('Status:', chalk.yellow('ALREADY COMPLETED or LOCKED'))
+        return Status['SOLVED']
       } else {
         console.log('Status:', chalk.red('UNKNOWN RESPONSE\n'))
         console.log(`\n${info}\n`)
