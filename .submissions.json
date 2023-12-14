@@ -195,15 +195,15 @@
   },
   {
     "part1": {
-      "solved": false,
-      "result": null,
-      "time": 0,
+      "solved": true,
+      "result": 105982,
+      "time": 15.178124999999966,
       "attempts": []
     },
     "part2": {
-      "solved": false,
-      "result": null,
-      "time": 0,
+      "solved": true,
+      "result": 85175,
+      "time": 2604.72775,
       "attempts": []
     }
   },
